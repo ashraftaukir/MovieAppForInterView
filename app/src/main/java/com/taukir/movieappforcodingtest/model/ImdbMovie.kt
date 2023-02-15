@@ -1,4 +1,4 @@
-package com.taukir.movieappforcodingtest
+package com.taukir.movieappforcodingtest.model
 
 import android.os.Parcelable
 import androidx.room.Entity
@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "movies_table")
 @Parcelize
-data class Movie(
+data class ImdbMovie(
     @SerializedName("Title")
     val title: String,
 
