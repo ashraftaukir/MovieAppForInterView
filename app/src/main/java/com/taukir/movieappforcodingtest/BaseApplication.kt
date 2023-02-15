@@ -2,7 +2,6 @@ package com.taukir.movieappforcodingtest
 
 import android.app.Application
 import android.os.Build
-import androidx.constraintlayout.widget.Constraints
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
@@ -23,7 +22,7 @@ class BaseApplication : Application() {
     }
 
     private fun setupRecurringWork() {
-        val constraints = Constraints.Builder()
+        val constraints = androidx.work.Constraints.Builder()
             .setRequiredNetworkType(NetworkType.UNMETERED)
             .setRequiresBatteryNotLow(true)
             .setRequiresCharging(true)
