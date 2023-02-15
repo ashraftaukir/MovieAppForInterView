@@ -12,7 +12,7 @@ android {
 
     defaultConfig {
         applicationId "com.taukir.movieappforcodingtest"
-        minSdk 24
+        minSdk 19
         targetSdk 33
         versionCode 1
         versionName "1.0"
@@ -69,6 +69,9 @@ dependencies {
     implementation 'androidx.fragment:fragment-ktx:1.5.5'
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'androidx.cardview:cardview:1.0.0'
+
+    implementation "androidx.work:work-runtime-ktx:2.8.0"
+
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'

@@ -19,10 +19,8 @@ class DetailFragment:Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_detail, container, false)
 
         val args: DetailFragmentArgs by navArgs()
-//        val movie = args.movie
-//
-//        binding.movie = movie
-
+        val movie = args.movie
+        binding.movie = movie
         return binding.root
     }
 }

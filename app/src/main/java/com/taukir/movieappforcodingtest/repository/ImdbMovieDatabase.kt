@@ -14,9 +14,9 @@ abstract class ImdbMovieDatabase:RoomDatabase(), ImdbMovieDatabaseDao {
 
     companion object {
         @Volatile
-        private var INSTANCE: ImdbMovieDatabaseDao? = null
+        private var INSTANCE: ImdbMovieDatabase? = null
 
-        fun getInstance(context: Context): ImdbMovieDatabaseDao {
+        fun getInstance(context: Context): ImdbMovieDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {

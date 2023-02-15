@@ -3,6 +3,10 @@ package com.taukir.movieappforcodingtest
 import android.app.Application
 import android.os.Build
 import androidx.constraintlayout.widget.Constraints
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.NetworkType
+import androidx.work.PeriodicWorkRequestBuilder
+import androidx.work.WorkManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
