@@ -2,9 +2,9 @@ package com.taukir.movieappforcodingtest.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ImdbMoviesResponse(
+data class MoviesResponse(
     @SerializedName("Search")
-    val imdbMovieList: List<ImdbMovie>,
+    val movieList: List<Movie>,
     val totalResults: String,
     val Response: String
 )

@@ -12,8 +12,11 @@ import com.taukir.movieappforcodingtest.R
 import com.taukir.movieappforcodingtest.adapter.MovieAdapter
 import com.taukir.movieappforcodingtest.adapter.MovieListener
 import com.taukir.movieappforcodingtest.databinding.FragmentMainBinding
-import com.taukir.movieappforcodingtest.viewmodel.ImdbMovieViewModel
+import com.taukir.movieappforcodingtest.viewmodel.MovieViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+
+@AndroidEntryPoint
 class MainFragment:Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -23,7 +26,7 @@ class MainFragment:Fragment() {
         val binding: FragmentMainBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_main, container, false)
 
-        val movieViewModel: ImdbMovieViewModel by viewModels()
+        val movieViewModel: MovieViewModel by viewModels()
 
         val movieAdapter = MovieAdapter(MovieListener { movie ->
             movieViewModel.onMovieClicked(movie)
@@ -32,7 +35,7 @@ class MainFragment:Fragment() {
         binding.movieRecyclerview.adapter = movieAdapter
         binding.viewmodel = movieViewModel
 
-        movieViewModel.navigateToMovieDetail.observe(viewLifecycleOwner, { movie ->
+        movieViewModel.navigateToMovieDetail.observe(viewLifecycleOwner) { movie ->
             movie?.let {
                 this.findNavController().navigate(
                     MainFragmentDirections
@@ -40,12 +43,12 @@ class MainFragment:Fragment() {
                 )
                 movieViewModel.onMovieDetailNavigated()
             }
-        })
+        }
 
-        movieViewModel.movies.observe(viewLifecycleOwner, {
+        movieViewModel.movies.observe(viewLifecycleOwner) {
             movieAdapter.differ.submitList(it)
             binding.groupLoading.visibility = View.GONE
-        })
+        }
 
 
         return binding.root

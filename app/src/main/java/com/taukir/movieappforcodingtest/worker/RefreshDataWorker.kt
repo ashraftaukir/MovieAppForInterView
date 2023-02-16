@@ -1,9 +1,10 @@
-package com.taukir.movieappforcodingtest
+package com.taukir.movieappforcodingtest.worker
 
 import android.content.Context
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
-import com.taukir.movieappforcodingtest.repository.ImdbMovieDatabase
+import com.taukir.movieappforcodingtest.repository.MovieRepository
+import com.taukir.movieappforcodingtest.repository.db.MovieDatabase
 import retrofit2.HttpException
 
 class RefreshDataWorker(appContext: Context, workerParams: WorkerParameters) :
@@ -15,9 +16,9 @@ class RefreshDataWorker(appContext: Context, workerParams: WorkerParameters) :
     }
 
     override suspend fun doWork(): Result {
-        val dataSource = ImdbMovieDatabase.getInstance(applicationContext)
+        val dataSource = MovieDatabase.getInstance(applicationContext)
         return try {
-            val repository = ImdbMovieRepository(dataSource)
+            val repository = MovieRepository(dataSource)
             repository.refreshMovies("batman")
             Result.success()
         } catch (e: HttpException) {

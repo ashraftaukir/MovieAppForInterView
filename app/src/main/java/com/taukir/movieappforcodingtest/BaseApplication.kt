@@ -6,12 +6,14 @@ import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
 import androidx.work.WorkManager
+import com.taukir.movieappforcodingtest.worker.RefreshDataWorker
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.util.concurrent.TimeUnit
 
-
+@HiltAndroidApp
 class BaseApplication : Application() {
     private val applicationScope = CoroutineScope(Dispatchers.Default)
 

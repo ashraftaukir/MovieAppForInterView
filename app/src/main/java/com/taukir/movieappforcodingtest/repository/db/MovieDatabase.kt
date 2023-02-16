@@ -1,29 +1,28 @@
-package com.taukir.movieappforcodingtest.repository
+package com.taukir.movieappforcodingtest.repository.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.taukir.movieappforcodingtest.repository.db.ImdbMovieDatabaseDao
-import com.taukir.movieappforcodingtest.model.ImdbMovie
+import com.taukir.movieappforcodingtest.model.Movie
 
 
-@Database(entities = [ImdbMovie::class], version = 1, exportSchema = false)
-abstract class ImdbMovieDatabase:RoomDatabase(), ImdbMovieDatabaseDao {
-    abstract val movieDatabaseDao: ImdbMovieDatabaseDao
+@Database(entities = [Movie::class], version = 1, exportSchema = false)
+abstract class MovieDatabase:RoomDatabase(){
+    abstract val movieDatabaseDao: MovieDatabaseDao
 
     companion object {
         @Volatile
-        private var INSTANCE: ImdbMovieDatabase? = null
+        private var INSTANCE: MovieDatabase? = null
 
-        fun getInstance(context: Context): ImdbMovieDatabase {
+        fun getInstance(context: Context): MovieDatabase {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
-                        ImdbMovieDatabase::class.java,
-                        "imdb_movie_database"
+                        MovieDatabase::class.java,
+                        "sleep_history_database"
                     )
                         .fallbackToDestructiveMigration()
                         .build()

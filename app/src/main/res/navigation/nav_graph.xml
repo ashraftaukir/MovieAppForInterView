@@ -25,6 +25,6 @@
         tools:layout="@layout/fragment_detail" >
         <argument
             android:name="movie"
-            app:argType="ir.kaaveh.recyclerviewmvvm.model.Movie" />
+            app:argType="com.taukir.movieappforcodingtest.model.Movie" />
     </fragment>
 </navigation>

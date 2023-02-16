@@ -8,7 +8,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Entity(tableName = "movies_table")
 @Parcelize
-data class ImdbMovie(
+data class Movie(
     @SerializedName("Title")
     val title: String,
 

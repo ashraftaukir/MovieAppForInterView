@@ -8,16 +8,16 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.taukir.movieappforcodingtest.R
 import com.taukir.movieappforcodingtest.databinding.ItemRecyclerviewMovieBinding
-import com.taukir.movieappforcodingtest.model.ImdbMovie
+import com.taukir.movieappforcodingtest.model.Movie
 
 class MovieAdapter(private val clickListener: MovieListener) :
     RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    private val differCallback = object : DiffUtil.ItemCallback<ImdbMovie>() {
-        override fun areItemsTheSame(oldItem: ImdbMovie, newItem: ImdbMovie): Boolean {
+    private val differCallback = object : DiffUtil.ItemCallback<Movie>() {
+        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem.imdbID == newItem.imdbID
         }
-        override fun areContentsTheSame(oldItem: ImdbMovie, newItem: ImdbMovie): Boolean {
+        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
             return oldItem == newItem
         }
     }
@@ -45,6 +45,6 @@ class MovieAdapter(private val clickListener: MovieListener) :
         RecyclerView.ViewHolder(binding.root)
 }
 
-class MovieListener(val clickListener: (movie: ImdbMovie) -> Unit) {
-    fun onClick(movie: ImdbMovie) = clickListener(movie)
+class MovieListener(val clickListener: (movie: Movie) -> Unit) {
+    fun onClick(movie: Movie) = clickListener(movie)
 }

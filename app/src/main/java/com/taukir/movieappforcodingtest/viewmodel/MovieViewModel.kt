@@ -1,37 +1,37 @@
 package com.taukir.movieappforcodingtest.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.taukir.movieappforcodingtest.ImdbMovieRepository
-import com.taukir.movieappforcodingtest.model.ImdbMovie
+import com.taukir.movieappforcodingtest.repository.MovieRepository
+import com.taukir.movieappforcodingtest.model.Movie
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
-class ImdbMovieViewModel(
+class MovieViewModel  @Inject constructor(
 
-    imdbMovieRepository: ImdbMovieRepository
+    movieRepository: MovieRepository
 
 ):ViewModel() {
 
 
-    val movies = imdbMovieRepository.movies
+    val movies = movieRepository.movies
 
 
     init {
         viewModelScope.launch {
-            imdbMovieRepository.refreshMovies("batman")
+            movieRepository.refreshMovies("batman")
         }
     }
 
 
 
     //Navigate to detail
-    private val _navigateToMovieDetail = MutableLiveData<ImdbMovie>()
+    private val _navigateToMovieDetail = MutableLiveData<Movie>()
     val navigateToMovieDetail
         get() = _navigateToMovieDetail
 
-    fun onMovieClicked(movie: ImdbMovie) {
+    fun onMovieClicked(movie: Movie) {
         _navigateToMovieDetail.value = movie
     }
 
