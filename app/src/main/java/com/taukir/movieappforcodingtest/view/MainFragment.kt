@@ -42,6 +42,7 @@ class MainFragment:Fragment() {
                         .actionMainFragmentToDetailFragment(movie)
                 )
                 movieViewModel.onMovieDetailNavigated()
+
             }
         }
 
