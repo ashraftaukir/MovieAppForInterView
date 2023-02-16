@@ -13,7 +13,7 @@ class MovieNetworkDataSource {
         var movies: List<Movie>? = null
 
         try {
-            response = MyAPI().getMovies()
+            response = MyAPI().getMovies(movieName)
         } catch (e: IOException) {
             e.printStackTrace()
         }

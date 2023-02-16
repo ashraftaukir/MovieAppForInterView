@@ -5,9 +5,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.taukir.movieappforcodingtest.repository.MovieRepository
 import com.taukir.movieappforcodingtest.model.Movie
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+
+@HiltViewModel
 class MovieViewModel  @Inject constructor(
 
     movieRepository: MovieRepository
